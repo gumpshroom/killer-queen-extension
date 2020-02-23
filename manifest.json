@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+
+  "name": "Killer Queen",
+  "version": "0.1.0",
+  "description": "...Maybe we're not supposed to know the description?",
+  "content_scripts": [{
+    "css": ["styles.css"],
+    "js": ["content.js"],
+    "matches": ["<all_urls>"]
+  }]
+}
