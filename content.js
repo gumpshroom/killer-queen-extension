@@ -1,6 +1,6 @@
 var buttons = document.getElementsByTagName('button');
 var links = document.getElementsByTagName('a')
-
+var PERCENT = 0.5
 /*var buttonText = []
 for(var x = 0; x < buttons.length; i++) {
   buttonText.push(buttons[x].innerText)
@@ -31,28 +31,42 @@ for(var x = 0; x < links.length; i++) {
     //buttons[i].setAttribute("onmouseout", "this.innerText = \"" + buttons[i].getAttribute("prevkqtext") + "\"")
   //}
 //}
+var processed = 0;
+while(processed < Math.floor(links.length * PERCENT)) {
+//for (var i = 0, l = Math.floor(links.length * PERCENT); i < l; i++) {
+  var i;
+  var foundnewlink = false;
+  while(!foundnewlink) {
+    var tempindex = randInt(0, links.length)
+    console.log(links[tempindex])
+    var templink = links[tempindex]
+    console.log("templink:" + templink)
+    if(templink && templink.getAttribute("prevkqtext") == null) {
+      i = tempindex
+      foundnewlink = true;
+    }
+  }
+  if(links[i].getAttribute("prevkqtext") == null) {
+    /*var x = document.createElement("div")
+    x.setAttribute("id", "kqtooltip" + i)*/
+    /*tippy('#kqtooltip' + i, {
+      content: "Wait! Killer Queen has already touched that button!!"
+    });*/
 
-for (var i = 0, l = links.length; i < l; i++) {
-  /*var x = document.createElement("div")
-  x.setAttribute("id", "kqtooltip" + i)*/
-  /*tippy('#kqtooltip' + i, {
-    content: "Wait! Killer Queen has already touched that button!!"
-  });*/
+    /*x.setAttribute("class", "tooltiptext")
+    x.innerHTML = "Wait! Killer Queen has already touched that button!!"
+    links[i].appendChild(x)
+    links[i].setAttribute("class", "tooltip")
 
-  /*x.setAttribute("class", "tooltiptext")
-  x.innerHTML = "Wait! Killer Queen has already touched that button!!"
-  links[i].appendChild(x)
-  links[i].setAttribute("class", "tooltip")
-
-  links[i].appendChild(x)*/
-  //if(links[i].innerText === "") {
+    links[i].appendChild(x)*/
+    //if(links[i].innerText === "") {
     links[i].setAttribute("prevkqtext", links[i].innerHTML)
-    links[i].onmouseover = function() {
+    links[i].onmouseover = function () {
       for (var x = 0; x < this.childNodes.length; x++) {
-        this.childNodes[x].onmouseleave = function() {
+        this.childNodes[x].onmouseleave = function () {
           var currentDOMObj = this
-          while(currentDOMObj.parentNode) {
-            if(currentDOMObj.parentNode.nodeName === "A") {
+          while (currentDOMObj.parentNode) {
+            if (currentDOMObj.parentNode.nodeName === "A") {
               currentDOMObj.innerHTML = "\"" + links[i].getAttribute("prevkqtext") + "\""
             } else {
               currentDOMObj = currentDOMObj.parentNode
@@ -60,16 +74,19 @@ for (var i = 0, l = links.length; i < l; i++) {
           }
         }
       }
-      for(var x = 0; x < this.childNodes.length; x++) {
-        if(this.childNodes[x].innerText && this.childNodes[x].innerText !== ""  && this.childNodes[x].innerText.match("[a-zA-Z]")) {
-          this.childNodes[x].innerText = "Wait!! Killer Queen has already touched that link!!"
+      for (var x = 0; x < this.childNodes.length; x++) {
+        if (this.childNodes[x].innerText && this.childNodes[x].innerText !== "" && this.childNodes[x].innerText.match("[a-zA-Z]")) {
+          this.childNodes[x].innerText = "Wait!! Killer Queen has already touched this link!!"
           break
         }
       }
     }
-    links[i].onmouseout = function() {
+    links[i].onmouseout = function () {
       this.innerHTML = this.getAttribute("prevkqtext")
     }
+    processed ++;
+  }
+
   //} else {
   //  links[i].setAttribute("prevkqtext", links[i].innerText)
  //   links[i].setAttribute("onmouseover", "this.innerText = \"Wait!! Killer Queen has already touched that link!!\"")
@@ -254,7 +271,7 @@ function kqtouchedl (elem) {  /* added argument */
       this.bomb.style['fontSize'] = '18px';
       this.bomb.style['color'] = '#fff';
       this.bomb.style['lineHeight'] = "" + Bomb.SIZE + "px";
-      this.bomb.style['background'] = '#fff';
+      this.bomb.style['background'] = '#000';
       this.bomb.style['opacity'] = 0;
       this.bomb.style['position'] = 'absolute';
       this.bomb.style['top'] = "" + (this.pos.y - Bomb.SIZE / 2) + "px";
@@ -285,7 +302,7 @@ function kqtouchedl (elem) {  /* added argument */
       this.state = 'exploded';
       this.bomb.innerHTML = '';
       this.bomb.style['fontSize'] = '12px';
-      return this.bomb.style['opacity'] = 0.05;
+      return this.bomb.style['opacity'] = 0;
     };
 
     return Bomb;
@@ -310,10 +327,12 @@ function kqtouchedl (elem) {  /* added argument */
       for(var x = 0; x < links.length; x++) {
         if ((_ref2 = links[x]) != null) {
           _this = this;
-          links[x].href = "javascript:void(0)"
-          links[x].onclick = function (event) {
-            return _this.dropBomb(event);
-          };
+          if(links[x].getAttribute("prevkqtext") != null) {
+            links[x].href = "javascript:void(0)"
+            links[x].onclick = function (event) {
+              return _this.dropBomb(event);
+            };
+          }
         }
       }
       this.body.addEventListener("touchstart", function(event) {
