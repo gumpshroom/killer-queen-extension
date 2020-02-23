@@ -10,13 +10,8 @@
     "http://*/",
     "https://*/"
   ],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
   "content_scripts": [{
-    "css": ["styles.css"],
-    "js": ["content.js", "popper.js", "tippy.js"],
+    "js": ["content.js"],
     "matches": ["<all_urls>"]
   }]
 }
