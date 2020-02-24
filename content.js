@@ -1,5 +1,5 @@
 var links = document.getElementsByTagName('a')
-var PERCENT = 0.5
+var PERCENT = 0.2
 var processed = 0;
 while(processed < Math.floor(links.length * PERCENT)) {
   var i;

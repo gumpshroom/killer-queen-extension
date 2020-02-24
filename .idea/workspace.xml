@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3df13ce8-e8cb-41e2-b195-66876a1ab554" name="Default Changelist" comment="" />
+    <list default="true" id="3df13ce8-e8cb-41e2-b195-66876a1ab554" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/content.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +48,7 @@
       <option name="presentableId" value="Default" />
       <updated>1578430284927</updated>
       <workItem from="1578430286408" duration="3186000" />
-      <workItem from="1582424444477" duration="16165000" />
+      <workItem from="1582424444477" duration="16632000" />
     </task>
     <task id="LOCAL-00001" summary="try to host on jsdelivr">
       <created>1582473330634</created>
@@ -76,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582498980291</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="remove junk">
+      <created>1582499212909</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1582499212909</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,6 +106,7 @@
     <MESSAGE value="try to host on jsdelivr" />
     <MESSAGE value="add fontbomb and fix links" />
     <MESSAGE value="randomly infect links" />
-    <option name="LAST_COMMIT_MESSAGE" value="randomly infect links" />
+    <MESSAGE value="remove junk" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove junk" />
   </component>
 </project>
